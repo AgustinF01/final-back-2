@@ -2,6 +2,12 @@
 import Product from '../models/product.model.js';
 import mongoose from 'mongoose';
 import validator from 'validator';
+import ProductRepository from '../repositories/ProductRepository.js';
+import { ProductService } from '../services/ProductService.js';
+
+const productRepository = new ProductRepository();
+const productService = new ProductService(productRepository);
+
 
 // Obtener todos los productos
 export const getProducts = async (req, res) => {
@@ -70,10 +76,15 @@ export const createProduct = async (req, res) => {
         }
 
         // Validar URL de imagen
-        if (!validator.isURL(imagen)) {
+        const { isURL } = require('validator'); // Añadir al inicio del archivo
+        if (!isURL(imagen, {
+            protocols: ['http', 'https'],
+            require_protocol: true, // Obligar protocolo
+            allow_underscores: true
+        })) {
             return res.status(400).json({
                 success: false,
-                message: "La imagen debe ser una URL válida"
+                message: "URL de imagen inválida. Debe comenzar con http:// o https://"
             });
         }
 
@@ -177,3 +188,30 @@ export const deleteProduct = async (req, res) => {
         res.status(500).json({ success: false, message: "Error al eliminar producto" });
     }
 };
+
+export class ProductControllerService {
+    constructor(productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    async getAllProducts() {
+        return this.productRepository.getAll();
+    }
+
+    async getProductById(id) {
+        return this.productRepository.getById(id);
+    }
+
+    async createProduct(productData) {
+        // Aquí iría lógica adicional de validación
+        return this.productRepository.create(productData);
+    }
+
+    async updateProduct(id, productData) {
+        return this.productRepository.update(id, productData);
+    }
+
+    async deleteProduct(id) {
+        return this.productRepository.delete(id);
+    }
+}

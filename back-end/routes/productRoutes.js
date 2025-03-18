@@ -15,6 +15,8 @@ router.route('/:id')
     .put(protect, isAdmin, updateProduct)
     .delete(protect, isAdmin, deleteProduct);
 
+
+
 router.post(
     '/',
     isAdmin,
@@ -39,5 +41,10 @@ router.post(
 );
 
 router.get('/', getProducts);
+router.get('/:id', getProductById);
+router.post('/', protect, isAdmin, createProduct);
+router.put('/:id', protect, isAdmin, updateProduct);
+router.delete('/:id', protect, isAdmin, deleteProduct);
+
 
 export default router;

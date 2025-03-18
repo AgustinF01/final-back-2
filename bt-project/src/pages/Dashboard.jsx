@@ -104,8 +104,10 @@ const Dashboard = () => {
                 categoria: newProduct.categoria,
                 tipo: newProduct.tipo,
                 talles: newProduct.talles,       // Asegurar que se envíen
-                cantidades: newProduct.cantidades.map(Number)
+                cantidades: newProduct.cantidades.map(Number),
             };
+            new URL(newProduct.imagen); // Lanza error si es inválida
+
 
             if (editingProduct) {
                 // Actualizar producto

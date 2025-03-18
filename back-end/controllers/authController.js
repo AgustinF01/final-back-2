@@ -1,6 +1,7 @@
 import User from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
 dotenv.config();
 
@@ -14,8 +15,8 @@ export const register = async (req, res) => {
         }
 
         // Verificar si el usuario ya existe
-        const existingUser = await User.findOne({ 
-            $or: [{ email }, { nombre }] 
+        const existingUser = await User.findOne({
+            $or: [{ email }, { nombre }]
         });
 
         if (existingUser) {
@@ -70,7 +71,7 @@ export const checkAvailability = async (req, res) => {
     try {
         const { email, nombre } = req.query;
         const query = {};
-        
+
         if (email) query.email = email;
         if (nombre) query.nombre = nombre;
 
@@ -80,3 +81,14 @@ export const checkAvailability = async (req, res) => {
         res.status(500).json({ error: 'Error verificando disponibilidad' });
     }
 };
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false // Añadir para desarrollo
+    }
+});

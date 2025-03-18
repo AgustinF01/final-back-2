@@ -32,7 +32,9 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 }, {
     collection: 'users' // 👈 Fuerza el nombre de la colección
 });

@@ -40,6 +40,8 @@ const Login = () => {
                 withCredentials: true
             });
 
+            login(response.data.user); // ← Esto ahora maneja la redirección automáticamente
+
             // Obtener carrito de localStorage
             const localCart = getLocalCart();
 
@@ -58,8 +60,8 @@ const Login = () => {
                 setLocalCart([]); // Limpiar localStorage
             }
 
-            login(response.data.user);
-            navigate('/', { replace: true }); // Agrega el replace: true
+            //login(response.data.user);
+            //navigate('/', { replace: true }); // Agrega el replace: true
         } catch (error) {
             let errorMessage = 'Error en el servidor';
             if (error.response) {
@@ -151,12 +153,23 @@ const Login = () => {
                     Continuar con Google
                 </Button>
 
-                <Grid container justifyContent="flex-end">
+                <Grid container justifyContent="center">
                     <Grid item>
                         <Typography variant="body2" sx={{ mt: 2, color: 'black' }}>
                             ¿No tienes cuenta?{' '}
                             <Link component={RouterLink} to="/registrarse" underline="hover">
                                 Regístrate
+                            </Link>
+                        </Typography>
+                        <Typography variant="body2" sx={{ mt: 1, color: 'black' }}>
+                            ¿Olvidaste tu contraseña?{' '}
+                            <Link
+                                component={RouterLink}
+                                to="/forgot-password"
+                                underline="hover"
+                                sx={{ color: 'primary.main' }}
+                            >
+                                Recupérala aquí
                             </Link>
                         </Typography>
                     </Grid>

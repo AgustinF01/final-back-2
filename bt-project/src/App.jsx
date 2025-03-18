@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard';
 import RequireAuth from './components/RequireAuth';
 import Checkout from './pages/Checkout';
 import Comprobante from './pages/Comprobante';
+import ForgotPassword from './components/ForgotPassword';
 import "./App.css";
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/detalle-producto/:id" element={<ProductDetail />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/comprobante" element={<Comprobante />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route
               path="/dashboard"
               element={

@@ -1,11 +1,13 @@
 // src/context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Añadir esto
 import axios from 'axios';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const navigate = useNavigate(); // Añadir hook de navegación
     const [isAuthChecked, setIsAuthChecked] = useState(false); // 👈 Nuevo estado
 
     useEffect(() => {
@@ -42,6 +44,13 @@ export const AuthProvider = ({ children }) => {
     const login = (userData) => {
         setUser(userData);
         localStorage.setItem('user', JSON.stringify(userData));
+
+        // Redirigir inmediatamente después del login
+        if (userData.isAdmin) {
+            navigate('/dashboard');
+        } else {
+            navigate('/');
+        }
     };
 
     const logout = async () => {
