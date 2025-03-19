@@ -1,4 +1,3 @@
-// back-end/middleware/authMiddleware.js
 import { authenticateJWT } from "../config/passport.js";
 
 export const protect = (req, res, next) => {

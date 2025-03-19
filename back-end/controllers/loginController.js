@@ -47,7 +47,7 @@ export const login = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
             maxAge: 3600000, // 1 hora
-            domain: 'localhost' // 👈 Especificar dominio para desarrollo
+            domain: 'localhost' 
         });
 
         res.status(200).json({
@@ -57,12 +57,12 @@ export const login = async (req, res) => {
                 id: user._id,
                 nombre: user.nombre,
                 email: user.email,
-                isAdmin: user.isAdmin // ← Añadir esta línea
+                isAdmin: user.isAdmin 
             }
         });
 
     } catch (error) {
-        console.error('Error en login:', error); // 👈 Para depuración
+        console.error('Error en login:', error); 
         res.status(500).json({
             success: false,
             message: 'Error interno del servidor'

@@ -1,4 +1,3 @@
-// back-end/routes/checkoutRoutes.js
 import express from 'express';
 import { processOrder, getOrderById } from '../controllers/checkoutController.js';
 import { protect } from '../middleware/authMiddleware.js';

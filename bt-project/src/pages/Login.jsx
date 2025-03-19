@@ -40,7 +40,7 @@ const Login = () => {
                 withCredentials: true
             });
 
-            login(response.data.user); // ← Esto ahora maneja la redirección automáticamente
+            login(response.data.user);
 
             // Obtener carrito de localStorage
             const localCart = getLocalCart();
@@ -60,8 +60,6 @@ const Login = () => {
                 setLocalCart([]); // Limpiar localStorage
             }
 
-            //login(response.data.user);
-            //navigate('/', { replace: true }); // Agrega el replace: true
         } catch (error) {
             let errorMessage = 'Error en el servidor';
             if (error.response) {

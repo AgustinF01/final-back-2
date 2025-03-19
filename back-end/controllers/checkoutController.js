@@ -1,4 +1,3 @@
-// back-end/controllers/checkoutController.js
 import mongoose from 'mongoose';
 import Order from '../models/Order.model.js';
 

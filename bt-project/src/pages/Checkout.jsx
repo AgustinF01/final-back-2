@@ -260,8 +260,8 @@ const Checkout = () => {
                                 value={paymentMethod}
                                 onChange={handlePaymentMethodChange}
                             >
-                                <MenuItem value="credit">Tarjeta de Crédito</MenuItem>
-                                <MenuItem value="paypal">PayPal</MenuItem>
+                                <MenuItem value="credit">Tarjeta de Credito</MenuItem>
+                                <MenuItem value="paypal">Tarjeta de Debito</MenuItem>
                             </Select>
                         </FormControl>
 

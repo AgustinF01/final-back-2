@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordToken: String,
     resetPasswordExpires: Date
 }, {
-    collection: 'users' // 👈 Fuerza el nombre de la colección
+    collection: 'users' 
 });
 
 // Hash de contraseña antes de guardar

@@ -1,4 +1,3 @@
-// src/context/CartContext.jsx
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
@@ -10,7 +9,7 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isInitialized, setIsInitialized] = useState(false);
-    const { logout } = useAuth(); // Obtener función de logout del contexto
+    const { logout } = useAuth(); 
 
     // 1. Guardar carrito en localStorage
     const saveCartToLocalStorage = (cart) => {

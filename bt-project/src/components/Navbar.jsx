@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box, Button, IconButton, Badge } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
@@ -21,6 +20,9 @@ const Navbar = () => {
                     {/* Enlaces comunes */}
                     <Button component={Link} to="/" sx={{ color: 'white' }}>Inicio</Button>
                     <Button component={Link} to="/catalogo" sx={{ color: 'white' }}>Catálogo</Button>
+                    <Button component={Link} to="/sobre-nosotros" sx={{ color: 'white' }}>Sobre nosotros</Button>
+                    <Button component={Link} to="/faq" sx={{ color: 'white' }}>Preguntas frecuentes</Button>
+                    <Button component={Link} to="/contacto" sx={{ color: 'white' }}>Contacto</Button>
 
                     {/* Enlaces condicionales */}
                     {user ? (
@@ -44,7 +46,7 @@ const Navbar = () => {
                 </Box>
                 <IconButton
                     color="inherit"
-                    onClick={() => setIsCartOpen(true)} // 👈 Ahora funciona
+                    onClick={() => setIsCartOpen(true)} 
                 >
                     <Badge badgeContent={cartItems.length} color="error">
                         <ShoppingCartIcon />

@@ -1,4 +1,3 @@
-// back-end/config/passport.js
 import passport from "passport";
 import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 import User from "../models/user.model.js";
@@ -28,5 +27,4 @@ passport.use(
     )
 );
 
-// Middleware para inicializar Passport y manejar la autenticación JWT
 export const authenticateJWT = passport.authenticate("jwt", { session: false });

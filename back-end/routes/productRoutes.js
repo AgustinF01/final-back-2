@@ -7,15 +7,13 @@ import { uploadProductImages } from '../middleware/uploadMiddleware.js';
 const router = express.Router();
 
 router.route('/')
-    .get(getProducts) // GET /api/products
-    .post(protect, isAdmin, createProduct); // POST /api/products
+    .get(getProducts) 
+    .post(protect, isAdmin, createProduct); 
 
 router.route('/:id')
-    .get(getProductById) // 👈 Nueva ruta GET
+    .get(getProductById) 
     .put(protect, isAdmin, updateProduct)
     .delete(protect, isAdmin, deleteProduct);
-
-
 
 router.post(
     '/',

@@ -18,10 +18,9 @@ import { useCart } from '../context/CartContext';
 
 
 const Comprobante = () => {
-    const { clearCart } = useCart(); // Función para limpiar el carrito
+    const { clearCart } = useCart(); 
     const location = useLocation();
     const { order } = location?.state || {};
-    // Utilizar el hook useNavigate
     const navigate = useNavigate();
 
     // Limpiar carrito al montar el componente si hay una orden válida

@@ -6,10 +6,10 @@ import authRoutes from './routes/authRoutes.js';
 import cookieParser from 'cookie-parser';
 import loginRoutes from './routes/loginRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
-import productRoutes from './routes/productRoutes.js'; // 👈 Nueva importación
-import categoryRoutes from './routes/categoryRoutes.js'; // 👈 Nueva importación
+import productRoutes from './routes/productRoutes.js'; 
+import categoryRoutes from './routes/categoryRoutes.js'; 
 import path from 'path';
-import cartRoutes from './routes/cartRoutes.js'; // 👈 Añade esta línea
+import cartRoutes from './routes/cartRoutes.js'; 
 import checkoutRoutes from './routes/checkoutRoutes.js';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
@@ -30,9 +30,9 @@ app.get('/api/test', async (req, res) => {
 const corsOptions = {
     origin: "http://localhost:5173",
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'], // Headers permitidos
-    exposedHeaders: ['Authorization'], // Headers expuestos al frontend
-    methods: ["GET", "POST", "PUT", "DELETE"], // 👈 Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'], 
+    exposedHeaders: ['Authorization'], 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
 };
 const __dirname = path.resolve();
 app.use(cookieParser());
@@ -57,7 +57,6 @@ app.post('/api/comprobante', async (req, res) => {
 
         res.json({ comprobante });
     } catch (error) {
-        // Manejar error de comprobante
     }
 });
 app.post('/api/payment', async (req, res) => {
@@ -72,21 +71,14 @@ app.post('/api/payment', async (req, res) => {
 
             res.json({ comprobante });
         } else {
-            // Manejar error de pago
         }
     } catch (error) {
-        // Manejar error de pago
     }
 });
 
 
 // Conexión a DB
 connectDB();
-
-// // Ruta de prueba
-// app.get('/', (req, res) => {
-//     res.send('API funcionando');
-// });
 
 const PORT = process.env.PORT || 5000;
 

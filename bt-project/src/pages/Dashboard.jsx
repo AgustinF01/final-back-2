@@ -36,7 +36,7 @@ const Dashboard = () => {
         precio: '',
         categoria: '',
         imagen: '',
-        tipo: '', // Campo requerido
+        tipo: '', 
         talles: [],
         cantidades: []
     });
@@ -103,10 +103,10 @@ const Dashboard = () => {
                 precio: parseFloat(newProduct.precio),
                 categoria: newProduct.categoria,
                 tipo: newProduct.tipo,
-                talles: newProduct.talles,       // Asegurar que se envíen
+                talles: newProduct.talles,       
                 cantidades: newProduct.cantidades.map(Number),
             };
-            new URL(newProduct.imagen); // Lanza error si es inválida
+            new URL(newProduct.imagen); 
 
 
             if (editingProduct) {
@@ -144,7 +144,7 @@ const Dashboard = () => {
             nombre: product.nombre,
             descripcion: product.descripcion,
             precio: product.precio,
-            categoria: product.categoria._id || product.categoria, // Soporta tanto objetos como IDs
+            categoria: product.categoria._id || product.categoria, 
             imagen: product.imagen,
             tipo: product.tipo,
             talles: product.tipo === 'ropa' ? product.talles : [],
@@ -162,10 +162,6 @@ const Dashboard = () => {
                 alert("Error al eliminar producto");
             }
         }
-    };
-
-    const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]); // Actualiza el estado de la imagen
     };
 
     return (
@@ -237,7 +233,7 @@ const Dashboard = () => {
                             <InputLabel>Categoría</InputLabel>
                             <Select
                                 name="categoria"
-                                value={newProduct.categoria} // Muestra el ID de la categoría seleccionada
+                                value={newProduct.categoria} 
                                 onChange={(e) => setNewProduct({ ...newProduct, categoria: e.target.value })}
                                 required
                             >
@@ -256,7 +252,7 @@ const Dashboard = () => {
                             <InputLabel>Tipo de producto</InputLabel>
                             <Select
                                 value={newProduct.tipo}
-                                name="tipo                                                            "
+                                name="tipo"
                                 onChange={(e) => setNewProduct({ ...newProduct, tipo: e.target.value })}
                                 label="Tipo de producto"
                                 required
@@ -377,10 +373,10 @@ const Dashboard = () => {
                                 <TableCell>${product.precio}</TableCell>
                                 <TableCell>{product.categoria?.name}</TableCell>
                                 <TableCell>
-                                    {product.talles.join(', ')} {/* Muestra talles */}
+                                    {product.talles.join(', ')}
                                 </TableCell>
                                 <TableCell>
-                                    {product.cantidades.reduce((a, b) => a + b, 0)} {/* Suma cantidades */}
+                                    {product.cantidades.reduce((a, b) => a + b, 0)}
                                 </TableCell>
                                 <TableCell>
                                     <Button

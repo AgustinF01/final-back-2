@@ -10,7 +10,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/auth/forgot-password', // ← URL completa
+                'http://localhost:5000/api/auth/forgot-password',
                 { email },
                 { withCredentials: true }
             );

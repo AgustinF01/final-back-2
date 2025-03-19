@@ -1,4 +1,3 @@
-// back-end/models/product.model.js
 import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
@@ -6,8 +5,8 @@ const productSchema = new mongoose.Schema({
     descripcion: { type: String, required: [true, "La descripción es obligatoria"] },
     precio: { type: Number, required: [true, "El precio es obligatorio"], min: [0, "El precio no puede ser negativo"] },
     categoria: {
-        type: mongoose.Schema.Types.ObjectId, // 👈 Usar ObjectId
-        ref: 'Category', // Referencia al modelo Category
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Category', 
         required: true
     }, imagen: {
         type: String,
@@ -30,7 +29,7 @@ const productSchema = new mongoose.Schema({
         min: [0, "La cantidad no puede ser negativa"]
     }]
 }, {
-    collection: 'products' // 👈 Fuerza el nombre de la colección
+    collection: 'products' 
 });
 
 export default mongoose.model('Product', productSchema);

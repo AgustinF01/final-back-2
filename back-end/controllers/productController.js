@@ -1,4 +1,3 @@
-// back-end/controllers/productController.js
 import Product from '../models/product.model.js';
 import mongoose from 'mongoose';
 import validator from 'validator';
@@ -12,7 +11,7 @@ const productService = new ProductService(productRepository);
 // Obtener todos los productos
 export const getProducts = async (req, res) => {
     try {
-        const products = await Product.find({}).populate('categoria', 'name'); // 👈 Poblar categorías
+        const products = await Product.find({}).populate('categoria', 'name'); 
         res.json(products);
     } catch (error) {
         res.status(500).json({ message: 'Error del servidor' });
@@ -76,10 +75,10 @@ export const createProduct = async (req, res) => {
         }
 
         // Validar URL de imagen
-        const { isURL } = require('validator'); // Añadir al inicio del archivo
+        const { isURL } = require('validator'); 
         if (!isURL(imagen, {
             protocols: ['http', 'https'],
-            require_protocol: true, // Obligar protocolo
+            require_protocol: true, 
             allow_underscores: true
         })) {
             return res.status(400).json({
@@ -97,7 +96,7 @@ export const createProduct = async (req, res) => {
             imagen,
             tipo,
             talles: tipo === 'ropa' ? talles : [], // Solo si es ropa
-            cantidades: tipo === 'ropa' ? cantidades.map(Number) : [] // Convertir a números
+            cantidades: tipo === 'ropa' ? cantidades.map(Number) : [] 
         });
 
         res.status(201).json({
@@ -148,7 +147,7 @@ export const updateProduct = async (req, res) => {
         const updatedProduct = await Product.findByIdAndUpdate(
             id,
             { nombre, descripcion, precio, categoria, imagen, tipo },
-            { new: true, runValidators: true } // 👈 Activa validaciones de Mongoose
+            { new: true, runValidators: true } 
         );
 
         if (!updatedProduct) {
@@ -203,7 +202,6 @@ export class ProductControllerService {
     }
 
     async createProduct(productData) {
-        // Aquí iría lógica adicional de validación
         return this.productRepository.create(productData);
     }
 

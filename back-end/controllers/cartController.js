@@ -1,4 +1,3 @@
-// back-end/controllers/cartController.js
 import Cart from '../models/Cart.js';
 import mongoose from 'mongoose';
 
@@ -8,7 +7,7 @@ export const getCart = async (req, res) => {
         const cart = await Cart.findOne({ user: req.params.userId })
             .populate({
                 path: 'items.productId',
-                select: 'nombre precio imagen', // 👈 Asegurar que incluye precio
+                select: 'nombre precio imagen', 
                 model: 'Product'
             });
 
@@ -18,7 +17,7 @@ export const getCart = async (req, res) => {
                 ...item.toObject(),
                 productId: {
                     ...item.productId.toObject(),
-                    precio: Number(item.productId.precio) || 0 // 👈 Forzar número
+                    precio: Number(item.productId.precio) || 0 
                 }
             }
         });
@@ -36,7 +35,7 @@ export const updateCart = async (req, res) => {
         const { items } = req.body;
 
         // Validar que el userId coincida con el usuario autenticado
-        if (req.user.id !== userId) { // 👈 Asumiendo que req.user viene del JWT
+        if (req.user.id !== userId) { 
             return res.status(403).json({
                 success: false,
                 message: "No autorizado para modificar este carrito"

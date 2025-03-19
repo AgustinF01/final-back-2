@@ -14,7 +14,6 @@ export class ProductService {
     }
 
     async createProduct(productData) {
-        // Aquí iría lógica adicional de validación
         return this.productRepository.create(productData);
     }
 

@@ -20,7 +20,6 @@ const Products = () => {
     const [categorias, setCategorias] = useState([]);
     const [tallaSeleccionada, setTallaSeleccionada] = useState('');
     const [productos, setProductos] = useState([]);
-    // Función para calcular el stock total
     const calcularStock = (producto) => {
         return producto.cantidades.reduce((total, cantidad) => total + cantidad, 0);
     };
@@ -53,7 +52,7 @@ const Products = () => {
 
     // Manejar cambios en los filtros
     const handleCategoriaChange = (e) => {
-        setCategoriaSeleccionada(e.target.value); // Usar valor directo (string)
+        setCategoriaSeleccionada(e.target.value); 
     };
 
     // Filtrar productos
@@ -85,7 +84,7 @@ const Products = () => {
                         {categorias.map((categoria) => (
                             <MenuItem
                                 key={categoria._id}
-                                value={categoria._id} // Usar _id como string
+                                value={categoria._id} 
                             >
                                 {categoria.name}
                             </MenuItem>
@@ -123,7 +122,6 @@ const Products = () => {
                                     ${producto.precio}
                                 </Typography>
 
-                                {/* Nuevo campo de stock total */}
                                 <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
                                     Stock disponible: {calcularStock(producto)} unidades
                                 </Typography>
@@ -131,23 +129,6 @@ const Products = () => {
                                 <Typography variant="body2" color="text.secondary">
                                     Categoría: {producto.categoria?.name || 'Sin categoría'}
                                 </Typography>
-
-                                {/* {producto.tipo === 'ropa' && (
-                                    <Box sx={{ mt: 2 }}>
-                                        <Typography variant="body2" color="text.secondary">
-                                            Detalle por talles:
-                                        </Typography>
-                                        {producto.talles.map((talle, index) => (
-                                            <Typography
-                                                key={index}
-                                                variant="body2"
-                                                color="text.secondary"
-                                            >
-                                                - Talle {talle}: {producto.cantidades[index]} unidades
-                                            </Typography>
-                                        ))}
-                                    </Box>
-                                )} */}
                             </CardContent>
                             <CardActions>
                                 <Button

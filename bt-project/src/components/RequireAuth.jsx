@@ -1,4 +1,3 @@
-// src/components/RequireAuth.jsx
 import { useAuth } from '../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 

@@ -16,7 +16,6 @@ export class ProductService {
     }
 
     async createProduct(productData) {
-        // Validación de negocio aquí
         if (productData.precio < 0) {
             throw new Error('El precio no puede ser negativo');
         }

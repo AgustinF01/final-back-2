@@ -54,10 +54,9 @@ const ProductDetail = () => {
     const handleAddToCart = () => {
         if (producto.tipo === 'ropa' && !selectedTalle) {
             setError('Selecciona un talle primero');
-            return; // Detiene la ejecución si hay error
+            return; 
         }
 
-        // Solo se ejecuta si no hay errores
         addToCart(producto, selectedTalle);
 
         console.log('Añadir al carrito:', {

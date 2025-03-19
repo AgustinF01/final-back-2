@@ -1,4 +1,3 @@
-// back-end/routes/cartRoutes.js
 import express from 'express';
 import { protect } from '../middleware/authMiddleware.js';
 import { getCart, updateCart } from '../controllers/cartController.js';
