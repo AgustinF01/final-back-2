@@ -1,3 +1,6 @@
+import mongoose from 'mongoose';
+import { ProductService } from '../services/ProductService.js';
+
 export class BaseRepository {
     constructor(model) {
         this.model = model;

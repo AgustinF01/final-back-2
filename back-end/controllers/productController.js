@@ -2,7 +2,7 @@
 import Product from '../models/product.model.js';
 import mongoose from 'mongoose';
 import validator from 'validator';
-import ProductRepository from '../repositories/ProductRepository.js';
+import { ProductRepository } from '../repositories/ProductRepository.js';
 import { ProductService } from '../services/ProductService.js';
 
 const productRepository = new ProductRepository();

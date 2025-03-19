@@ -63,7 +63,7 @@ const Index = () => {
                                 <CardActions sx={{ justifyContent: 'center', pb: 2 }}>
                                     <Button
                                         component={Link}
-                                        to={`/categoria/${category.id}`}
+                                        to={`/catalogo`}
                                         variant="contained"
                                         size="small"
                                     >

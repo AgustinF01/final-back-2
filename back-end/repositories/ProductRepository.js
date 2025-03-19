@@ -1,6 +1,7 @@
 import  Product  from '../models/product.model.js';
+import mongoose from 'mongoose';
 import { BaseRepository } from './BaseRepository.js';
-import {ProductRepository} from '../repositories/ProductRepository.js';
+import { ProductService } from '../services/ProductService.js';
 
 
 export class ProductRepository extends BaseRepository {

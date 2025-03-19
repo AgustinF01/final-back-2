@@ -1,5 +1,6 @@
-import { ProductRepository } from '../repositories/ProductRepository';
-import { Product } from '../models/product.model';
+import { BaseRepository } from '../repositories/BaseRepository.js';
+import { ProductRepository } from '../repositories/ProductRepository.js';
+import Product from '../models/product.model.js';
 
 export class ProductService {
     constructor(productRepository) {
